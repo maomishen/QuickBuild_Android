@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">QuickBuild</string>
+    <string name="title_activity_login">Login</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="login_address">IP Address or hostname</string>
+    <string name="login_port">Port</string>
+    <string name="login_user_name">User Name</string>
+    <string name="login_password">Password</string>
+    <string name="login_login">Login</string>
+    <string name="login_default_address">http://IP_ADDRESS_OR_HOSTNAME</string>
+    <string name="login_default_port">8810</string>
+
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>

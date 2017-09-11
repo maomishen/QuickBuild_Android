@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.maomishen.luna.quickbuild.LoginActivity"
+    tools:showIn="@layout/activity_login">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ProgressBar
+            android:id="@+id/progressBar_login_progress"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="-7dp"
+            android:indeterminate="false"
+            android:visibility="invisible" />
+
+        <EditText
+            android:id="@+id/editText_login_address"
+            style="@style/Widget.AppCompat.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_bottom"
+            android:layout_marginLeft="@dimen/margin_left"
+            android:layout_marginRight="@dimen/margin_right"
+            android:layout_marginTop="@dimen/text_margin"
+            android:layout_weight="1"
+            android:text="@string/login_default_address"
+            android:ems="10"
+            android:hint="@string/login_address"
+            android:inputType="textUri|textPersonName"
+            android:singleLine="true"
+            tools:ignore="Deprecated,RtlHardcoded" />
+
+        <EditText
+            android:id="@+id/editText_login_port"
+            style="@style/Widget.AppCompat.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_bottom"
+            android:layout_marginLeft="@dimen/margin_left"
+            android:layout_marginRight="@dimen/margin_right"
+            android:layout_marginTop="@dimen/margin_top"
+            android:layout_weight="1"
+            android:text="@string/login_default_port"
+            android:ems="10"
+            android:hint="@string/login_port"
+            android:inputType="textPersonName|number"
+            android:singleLine="true"
+            tools:ignore="Deprecated,RtlHardcoded" />
+
+        <EditText
+            android:id="@+id/editText_login_username"
+            style="@style/Widget.AppCompat.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_bottom"
+            android:layout_marginLeft="@dimen/margin_left"
+            android:layout_marginRight="@dimen/margin_right"
+            android:layout_marginTop="@dimen/margin_top"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="@string/login_user_name"
+            android:inputType="text"
+            android:singleLine="true"
+            tools:ignore="Deprecated,RtlHardcoded" />
+
+        <EditText
+            android:id="@+id/editText_login_password"
+            style="@style/Widget.AppCompat.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_bottom"
+            android:layout_marginLeft="@dimen/margin_left"
+            android:layout_marginRight="@dimen/margin_right"
+            android:layout_marginTop="@dimen/margin_top"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="@string/login_password"
+            android:inputType="textPassword"
+            android:singleLine="true"
+            tools:ignore="Deprecated,RtlHardcoded" />
+
+        <Button
+            android:id="@+id/button_login_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_bottom"
+            android:layout_marginLeft="@dimen/margin_left"
+            android:layout_marginRight="@dimen/margin_right"
+            android:layout_marginTop="@dimen/margin_top"
+            android:layout_weight="1"
+            android:text="@string/login_login"
+            tools:ignore="RtlHardcoded" />
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>
