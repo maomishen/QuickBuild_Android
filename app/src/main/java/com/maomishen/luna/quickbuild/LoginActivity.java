@@ -48,7 +48,7 @@ public class LoginActivity extends BaseActivity implements GetQuickBuildResponse
         ButterKnife.bind(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        Boolean first = getIntent().getExtras().getBoolean("First");
+        Boolean first = getIntent().getExtras().getBoolean("First", false);
         if (!first) {
             getSupportActionBar().setHomeButtonEnabled(true);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
