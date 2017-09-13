@@ -5,5 +5,5 @@ package com.maomishen.luna.quickbuild.network;
  */
 
 public interface GetQuickBuildResponse {
-    void getResponse(String api, boolean isError, String message);
+    void getResponse(Network networkType, boolean isError, String message);
 }

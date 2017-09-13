@@ -1,5 +1,12 @@
 package com.maomishen.luna.quickbuild.network;
 
+import android.app.Activity;
+
+import com.maomishen.luna.quickbuild.R;
+
+import java.io.IOException;
+import java.net.UnknownHostException;
+
 import okhttp3.Call;
 import okhttp3.Credentials;
 import okhttp3.OkHttpClient;
@@ -12,12 +19,13 @@ import okhttp3.Response;
 
 public class GetApiVersion{
 
-    private String url = "/rest/version";
     private GetQuickBuildResponse qbResponse;
+    private Activity mActivity;
     Call call;
 
-    public GetApiVersion(GetQuickBuildResponse qbResponse) {
+    public GetApiVersion(GetQuickBuildResponse qbResponse, Activity activity) {
         this.qbResponse = qbResponse;
+        this.mActivity = activity;
     }
 
     public void cancel() {
@@ -27,7 +35,7 @@ public class GetApiVersion{
     public void getApiVersion(String url, String user, String password){
         final OkHttpClient client = new OkHttpClient();
         final String credential = Credentials.basic(user, password);
-        url += this.url;
+        url += UrlLinks.version;
         final String finalUrl = url;
         new Thread(){
             public void run(){
@@ -40,9 +48,11 @@ public class GetApiVersion{
 
                     Response response = client.newCall(request).execute();
 
-                    qbResponse.getResponse("version", false, response.body().string());
-                } catch (Exception ex) {
-                    qbResponse.getResponse("version", true, ex.getMessage());
+                    qbResponse.getResponse(Network.VERSION, false, response.body().string());
+                } catch (UnknownHostException ex) {
+                    qbResponse.getResponse(Network.VERSION, true, mActivity.getString(R.string.errormessage_getapiversion_unknowhost));
+                } catch (IOException ex) {
+                    qbResponse.getResponse(Network.VERSION, true, ex.getMessage());
                 }
             }
         }.start();

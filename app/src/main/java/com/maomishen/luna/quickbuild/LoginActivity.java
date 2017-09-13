@@ -13,6 +13,7 @@ import android.widget.ProgressBar;
 import com.maomishen.luna.quickbuild.model.Server;
 import com.maomishen.luna.quickbuild.network.GetApiVersion;
 import com.maomishen.luna.quickbuild.network.GetQuickBuildResponse;
+import com.maomishen.luna.quickbuild.network.Network;
 import com.socks.library.KLog;
 
 import butterknife.BindView;
@@ -61,7 +62,7 @@ public class LoginActivity extends BaseActivity implements GetQuickBuildResponse
             return;
         }
         setInputEnable(false);
-        GetApiVersion apiVersion = new GetApiVersion(this);
+        GetApiVersion apiVersion = new GetApiVersion(this, mActivity);
         String url = address.getText().toString() + ":" + port.getText().toString();
         apiVersion.getApiVersion(url, username.getText().toString(), password.getText().toString());
     }
@@ -76,13 +77,13 @@ public class LoginActivity extends BaseActivity implements GetQuickBuildResponse
     private Boolean isEmpytInput() {
         String errorMessage = null;
         if (TextUtils.isEmpty(addressString)) {
-            errorMessage = "Address need Input";
+            errorMessage = getString(R.string.errormessage_login_empty_address);
         } else if (TextUtils.isEmpty(portString)) {
-            errorMessage = "Port need Input";
+            errorMessage = getString(R.string.errormessage_login_empty_port);
         } else if (TextUtils.isEmpty(usernameString)) {
-            errorMessage = "Username need Input";
+            errorMessage = getString(R.string.errormessage_login_empty_username);
         } else if (TextUtils.isEmpty(passwordString)) {
-            errorMessage = "Password need Input";
+            errorMessage = getString(R.string.errormessage_login_empty_password);
         }
         if (errorMessage != null) {
             Snackbar.make(content, errorMessage, Snackbar.LENGTH_SHORT).show();
@@ -101,9 +102,9 @@ public class LoginActivity extends BaseActivity implements GetQuickBuildResponse
     }
 
     @Override
-    public void getResponse(String api, boolean isError, final String message) {
+    public void getResponse(Network api, boolean isError, final String message) {
         if (isError) {
-            Snackbar.make(content, "Error", Snackbar.LENGTH_LONG)
+            Snackbar.make(content, message, Snackbar.LENGTH_LONG)
                     .setAction("Try Again", new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -111,7 +112,12 @@ public class LoginActivity extends BaseActivity implements GetQuickBuildResponse
                         }
                     }).show();
             KLog.e(message);
-            setInputEnable(true);
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    setInputEnable(true);
+                }
+            });
         } else {
             runOnUiThread(new Runnable() {
                 @Override

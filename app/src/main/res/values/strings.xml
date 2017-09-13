@@ -15,4 +15,10 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="errormessage_getapiversion_unknowhost">Unknow the Host name</string>
+    <string name="errormessage_login_empty_address">Address need Input</string>
+    <string name="errormessage_login_empty_port">Port need Input</string>
+    <string name="errormessage_login_empty_username">Username need Input</string>
+    <string name="errormessage_login_empty_password">Password need Input</string>
 </resources>
